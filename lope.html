@@ -1,0 +1,642 @@
+<html>
+  <meta charset='UTF-8' />
+  <meta content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5' name='viewport' />
+  <meta content='IE=edge' http-equiv='X-UA-Compatible' />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+  <script src="https://kit.fontawesome.com/4f3ce16e3e.js" crossorigin="anonymous"></script>
+  <head>
+    <title>Script HTML Bucin</title>
+  </head>
+  <style>
+    :root {
+      --warna-bg: rgba(0, 0, 0, .5);
+      --warna-teks: white;
+      --bingkai: 8px;
+    }
+
+    body {
+      background-color: #101010;
+      font-family: 'Ubuntu', sans-serif;
+      padding: 25px
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    body::before {
+      content: "\00A9 Script HTML Bucin";
+      color: white;
+      opacity: .3;
+      font-size: 2vw;
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+    }
+
+    #bodyblur {
+      opacity: .6;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, .3);
+      z-index: -1;
+      transition: all 1s ease;
+    }
+
+    @keyframes jj {
+      0% {
+        transform: scale(1.1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1.1);
+      }
+    }
+
+    #bodyblur img {
+      animation-name: jj;
+      animation-duration: 7s;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes leaves {
+      0% {
+        transform: scale(1.0);
+      }
+
+      100% {
+        transform: scale(.8);
+      }
+    }
+
+    #lope,
+    .lopdeg {
+      animation: leaves 1s ease-in-out infinite alternate;
+      -webkit-animation: leaves 1s ease-in-out infinite alternate;
+    }
+
+    .lovein:hover {
+      transform: scale(1.3);
+    }
+
+    @keyframes kont {
+      0% {
+        left: -1px;
+        top: -3px;
+      }
+
+      50% {
+        left: 1px;
+        top: 3px;
+      }
+
+      100% {
+        left: -1px;
+        top: -3px;
+      }
+    }
+
+    blockquote {
+      opacity: 0;
+      visibility: hidden;
+      transition: all 1.3s ease;
+      position: relative;
+      margin-top: 150px;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    blockquote {
+      width: 400px;
+      background: var(--warna-bg);
+      color: var(--warna-teks);
+      font-size: 17px;
+      font-weight: 700;
+      text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);
+      text-align: center;
+      line-height: 1.3em;
+      padding: 16px 35px 16px 35px;
+      border: 1px solid var(--warna-teks);
+      border-radius: var(--bingkai);
+    }
+
+    #katabawah {
+      font-weight: 400;
+      font-size: 15px;
+    }
+
+    #katanolak {
+      opacity: 0;
+      font-weight: 400;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    p {
+      margin: 1.5em 0;
+      transition: all .3s ease;
+    }
+
+    #bq img {
+      display: none;
+      width: 130px;
+      height: 130px;
+    }
+
+    #bq img:first-child {
+      display: inline-flex
+    }
+
+    #akhiran {
+      display: none;
+      color: #FFC700;
+      font-size: 12px;
+      text-align: center;
+      background: rgba(0, 0, 0, .55);
+      text-shadow: 0px;
+      padding: 10px;
+      border-radius: var(--bingkai);
+      line-height: 10px;
+      transition: all .2s ease;
+    }
+
+    #akhiran:hover {
+      transform: scale(.9);
+      opacity: .5;
+    }
+
+    #pergeseran {
+      opacity: 0;
+      visibility: hidden;
+      transition: all 1s ease;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+      position: relative;
+      max-width: 500px;
+      padding: 0 20px;
+      overflow-y: hidden;
+      overflow-x: scroll;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch
+    }
+
+    #pergeseran p {
+      background: #003A76;
+      color: white;
+      border: 1px dashed #fff;
+      border-radius: 8px;
+      padding: 8px;
+      display: flex;
+      flex-wrap: nowrap;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 90%;
+      min-height: 130px;
+      margin: 0 15px 0 0;
+      scroll-snap-align: center
+    }
+
+    #pergeseran>*:last-child {
+      margin-right: 0
+    }
+
+    #pergeseran:after {
+      content: '';
+      display: block;
+      flex-shrink: 0;
+      align-self: stretch;
+      padding-left: 20px
+    }
+
+    #pergeseran p b {
+      display: block;
+    }
+
+    #pergeseran p b img {
+      width: 80px;
+      height: 80px;
+      margin: 20px 0;
+    }
+
+    /*#pergeseran p b span{display:flex;}*/
+    #tm {
+      color: #FFB400;
+      transition: all .5s ease;
+    }
+
+    #tm:hover {
+      transform: scale(.7);
+    }
+
+    #contTom {
+      margin: 0;
+      display: flex;
+      align-items: left;
+      list-style: none
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      margin: 0;
+      margin: 12px 8px 12px 0;
+      transition: all .3s ease;
+      padding: 10px 15px;
+      outline: 0;
+      border: 1px solid var(--warna-teks);
+      border-radius: var(--bingkai);
+      line-height: 20px;
+      background: var(--warna-bg);
+      color: var(--warna-teks);
+      font-size: 15px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      z-index: 1
+    }
+
+    .button:hover {
+      transform: scale(.95);
+      opacity: .98;
+    }
+
+    #buttonv2 {
+      position: absolute;
+      font-size: 15px;
+      color: white;
+      background: var(--warna-bg);
+      padding: 10px;
+      border-radius: 8px;
+      line-height: 10px;
+      text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);
+      opacity: 0
+    }
+
+    #Bn,
+    #By {
+      position: absolute;
+    }
+
+    #By {
+      margin-right: 100px
+    }
+
+    #Bn {
+      margin-left: 100px
+    }
+
+    .lovein {
+      font-size: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .3s ease;
+    }
+
+    .lovein svg {
+      width: 80px;
+      height: 80px;
+      fill: #fefefe
+    }
+
+    .content2 {
+      display: block;
+      text-align: center;
+      width: 100%;
+      height: 180px;
+      margin-top: 50px;
+    }
+
+    .content2>* {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 15px;
+      font-size: 17px;
+      color: white
+    }
+
+    .image img {
+      opacity: 0;
+      transform: scale(.1);
+      border-radius: 10%;
+      transition: all .7s ease;
+    }
+
+    #idmail {
+      margin-top: 12vh;
+      background: #fff;
+      padding: 10px;
+      width: 0;
+      height: 0;
+    }
+
+    #idkirim {
+      font-size: 13px;
+      text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);
+      color: white;
+      transition: all .5s ease;
+    }
+
+    #idkirim {
+      opacity: 0;
+      visibility: hidden;
+      margin-top: 100px
+    }
+
+    #idkirim:hover {
+      transform: scale(.8);
+    }
+
+    .content2 {
+      display: none;
+    }
+
+    #Content,
+    #k2 {
+      animation-name: none;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      position: relative;
+      opacity: 0;
+      width: 100%;
+      height: 180px;
+      transition: all 1.8s ease;
+    }
+
+    #Content>*,
+    #k2>* {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+    #k2,
+    #final1 {
+      transform: scale(.1);
+    }
+
+    #idgeser {
+      font-size: 17px;
+      text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);
+      color: white;
+      transition: all .5s ease;
+    }
+
+    .swal2-title {
+      margin-right: 20px;
+      margin-left: 20px;
+      font-size: 18px;
+      text-align: center;
+      padding: 15px 30px 0 30px;
+    }
+
+    .swal2-modal {
+      background: rgba(255, 255, 255, .99);
+      border: .7px solid #000;
+      border-radius: var(--bingkai);
+      top: -70px;
+    }
+
+    .fa-heart {
+      opacity: .3;
+      color: white;
+      font-size: 30px;
+      position: absolute;
+      animation: heartMove linear 1;
+      top: -10vh;
+      z-index: 0;
+    }
+
+    @keyframes heartMove {
+      0% {
+        transform: translateY(-10vh);
+      }
+
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+  <body>
+    <div id="bodyblur">
+      <img id="wallpaper" src="" width="100%" height="100%" />
+    </div>
+    <div id='Content'>
+      <div>
+        <blockquote id='bq'>
+          <img id="foto1" src="" />
+          <img id="foto2" src="" />
+          <p id="katakata"></p>
+          <p id="katabawah"></p>
+          <p id="katanolak"></p>
+          <p id="akhiran" onClick="menuju();">Kirim Pesan</p>
+        </blockquote>
+      </div>
+      <div id="contTom" style="display:none;">
+        <a id="By" class='button' onClick="terima()">
+          </i>Iyaaa </a>
+        <a id="Bn" class='button' onClick="tolak()">
+          </i>Engga </a>
+      </div>
+    </div>
+    <script>
+      function nonDiv() {
+        document.getElementById('Content').style = "opacity:0;visibility:hidden;margin-top:30vh;";
+      }
+
+      function showDiv() {
+        setTimeout(setel, 1200);
+        setTimeout(tombol, 1200);
+        document.getElementById("bq").style = "opacity:1;visibility:visible;margin-top:0";
+        Content.style = "opacity:1;animation:kont 3s infinite;";
+        document.getElementById("katakata").innerHTML = kata1;
+        katanolak.innerHTML = teksnolak;
+      }
+
+      function loadfoto() {
+        document.getElementById('foto1').src = gambar1;
+        document.getElementById('foto2').src = gambar2;
+      }
+
+      function showAkhir() {
+        setInterval(createHeart, 200);
+        document.getElementById('k2').style = "opacity:1;transform:scale(1);margin:0;";
+        document.getElementById('ftdua').style = "transform:scale(1);";
+        document.getElementById('final1').style = "transform:scale(1);";
+        document.getElementById('Content').style.display = "none";
+      }
+
+      function mulaiakhir() {
+        nonDiv();
+        setTimeout(showAkhir, 1400);
+        setTimeout(finalis, 2400);
+      }
+
+      function showTom() {
+        document.getElementById('idkirim').style = "opacity:1;visibility:visible;margin-top:140px;";
+      }
+
+      function tombol() {
+        contTom.style = "display:flex";
+      }
+
+      function akhiran() {
+        document.getElementById("akhiran").style = "display:inline-flex";
+      }
+
+      function otomatis() {
+        befanimkata();
+        setTimeout(animkata, 400);
+        contTom.style = "display:none";
+        setTimeout(tombol, 1200);
+      }
+
+      function befanimkata() {
+        katakata.style = "transform:scale(.01);";
+        katabawah.style = "transform:scale(.01);";
+      }
+
+      function animkata() {
+        katakata.style = "transform:scale(1);";
+        katabawah.style = "transform:scale(1);";
+      }
+
+      function animakhir() {
+        akhiran.style = "display:block;";
+      }
+      const swals = Swal.mixin({
+        allowOutsideClick: false,
+        cancelButtonColor: '#FF0040',
+      });
+      const swalsy = Swal.mixin({
+        confirmButtonText: 'Iya',
+        allowOutsideClick: false,
+      });
+      const swalst = Swal.mixin({
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        timer: 2500,
+        timerProgressBar: true,
+      });
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0');
+      var yyyy = today.getFullYear();
+      const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+      today = dd + ' ' + monthNames[today.getMonth()] + ' ' + yyyy;
+
+      function play() {
+        var audio = new Audio('' + linklagu);
+        audio.play();
+      }
+      async function menuju() {
+        if (fungsi == 2) {
+          await swals.fire('Kirim pesan ke WhatsApp aku, ya!');
+          window.location = "https://api.whatsapp.com/send?phone=6285646817708&text=" + pesanwhatsapp;
+          setTimeout(maubucin, 3500);
+        }
+      }
+
+      function setel() {
+        audio.play();
+      }
+      flag = 1;
+      flagg = 1;
+
+      function tolak() {
+        if (fungsi == 1) {
+          if (flagg == 1) {
+            Bn.style = "margin-top:170px;";
+            flagg = 2
+          } else if (flagg == 2) {
+            Bn.style = "margin-top:180px;margin-left:0;margin-right:95px;transform: rotate(-45deg)";
+            katanolak.style = "opacity:1";
+            flagg = 3
+          } else if (flagg == 3) {
+            Bn.style = "margin-top:12px;";
+            flagg = 1
+          }
+        }
+      }
+      fungsi = 1;
+      async function terima() {
+        if (fungsi == 1) {
+          bgm.play();
+          katanolak.innerHTML = "";
+          foto1.style = "display:none";
+          foto2.style = "display:inline-flex";
+          katakata.innerHTML = katakhir;
+          document.getElementById("katabawah").innerHTML = katakhirb;
+          befanimkata();
+          setTimeout(animkata, 400);
+          contTom.style = "display:none";
+          setTimeout(akhiran, 900);
+          setInterval(createHeart, 200);
+          fungsi = 2;
+          setTimeout(maubucin, 9000);
+        }
+      }
+      /* async function maubucin() {
+          await swals.fire({
+                title: ' < strong > Mau mentahan script bucinnya ? < /strong>', html: 'Ambil scriptnya di: ' + ' < a href = "https://www.google.com/url?sa=t&source=web&rct=j&url=https://www.sinkronin.com/2022/03/script-bucin.html&ved=2ahUKEwi0_bm0-6X3AhUyiOYKHeqTCToQFnoECAcQAQ&usg=AOvVaw2FUeikMkwWYTLthlrzGP94" > Klik di Sini! < /a> ' + 'ya' + ' < br > < br > ' + '
+                Bisa diedit sesukamu menggunakan aplikasi Quick Editor ataupun HTML Editor lainnya.
+                ', focusConfirm: false,}); } */
+    </script>
+    <!-- GANTI SEMUA TEKS, PESAN WHATSAPP, DAN AUDIO DI SINI -->
+    <script type="text/javascript">
+      async function apapun() {
+        audio = new Audio('https://jawab.feeldream.repl.co/akuganteng.mp3');
+        wallpaper.src = "https://jawab.feeldream.repl.co/wp.jpg";
+        bgm = new Audio('https://tanpa.feeldream.repl.co/bgmakhir.mp3');
+        gambar1 = "https://jawab.feeldream.repl.co/1.gif";
+        kata1 = "Hai, Mau Jadi Pacarku ngak? &#129315;";
+        teksnolak = "Haha tombol Engga-nya kabur &#129322;";
+        gambar2 = "https://jawab.feeldream.repl.co/2.gif";
+        katakhir = "Yeayyy! Makasii yaa &#129315;";
+        katakhirb = "Jangan lupa bales pesan aku!";
+        pesanwhatsapp = "aku mau jadi pacarmu :v";
+        showDiv();
+        loadfoto();
+      }
+      apapun();
+    </script>
+    <script>
+      const body = document.querySelector("body");
+
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "fas fa-heart";
+        heart.style.left = (Math.random() * 90) + "vw";
+        heart.style.animationDuration = (Math.random() * 3) + 2 + "s";
+        body.appendChild(heart);
+      }
+      setInterval(function name(params) {
+        var heartArr = document.querySelectorAll(".fa-heart");
+        if (heartArr.length > 100) {
+          heartArr[0].remove()
+        }
+      }, 100);
+    </script>
+  </body>
+</html>
